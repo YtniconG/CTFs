@@ -157,7 +157,7 @@ geben das Password ein für die id_rsa datei: **james13** und wir sind drin!<br>
 ### SSH Server:
 ![SSH Server login](./login_ssh.png)
 
-User Flag: `thm{65c1aaf000506e56996822c6281e6bf7}`<br>
+* User Flag: `thm{65c1aaf000506e56996822c6281e6bf7}`<br>
 <br>
 Nach dem ich auf dem System **linpeas** ausführe und das systeam nach PrivEsc möglichkeiten scannen finde ich in der **/etc/crontab** file eine Aufgabe die jede Minute ausgeführt wird:<br>
 `* * * * * root curl overpass.thm/downloads/src/buildscript.sh | bash`<br>
@@ -185,6 +185,6 @@ Jetzt heißt es warten bis der Target Server das Script downloaded und ausführt
 
 ![root access terminal](./root_access.png)
 
-
+* Root Flag: `thm{7f336f8c359dbac18d54fdd64ea753bb}`
 
 

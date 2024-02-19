@@ -145,13 +145,17 @@ Jetzt führen ich einen Hash Brute Force angriff aus:<br>
 
   1 password hash cracked, 0 left
   ```
+  <br>  
+* Command: `chmod 600 id_rsa`<br>
   <br>
   
-  * Command: 
-  
-  jetzt haben wir auch den schlüssel um uns auf denn SSH Server einzuloggen.<br>
-  Nun loggen wir uns ein mit: `ssh james@IP -id id_rsa`
-  
+jetzt haben wir auch den schlüssel um uns auf denn SSH Server einzuloggen.<br>
+Nun loggen wir uns ein mit: `ssh james@IP -id id_rsa` auf dem Server ein,<br>
+geben das Password ein für die id_rsa datei: **james13** und wir sind drin!<br>
+<br>
+
+### SSH Server:
+![SSH Server login](./login_ssh)
 
 
 

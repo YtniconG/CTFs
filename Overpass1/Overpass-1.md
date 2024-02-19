@@ -181,7 +181,8 @@ Als nächstes starte ich ein python3 http.server auf dem port 80 da der target s
 <br>
 * Command: `nc -lnvp 4444`<br>
 <br>
-Jetzt heißt es warten bis der Target Server das Script downloaded und ausführt, und ich hab eine root shell
+Jetzt heißt es warten bis der Target Server das Script downloaded und ausführt, und ich hab eine root shell<br>
+
 ![root access terminal](./root_access.png)
 
 

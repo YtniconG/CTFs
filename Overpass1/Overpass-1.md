@@ -187,4 +187,6 @@ Jetzt heißt es warten bis der Target Server das Script downloaded und ausführt
 
 * Root Flag: `thm{7f336f8c359dbac18d54fdd64ea753bb}`
 
+  Du kannst mich auf [Patreon](https://patreon.com/n3m3s1s713?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink) Supporten
+
 
